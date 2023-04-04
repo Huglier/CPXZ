@@ -33,9 +33,9 @@ public class Main {
         //2.d
         calculatedDeportmentSumPay(employee, 4);
         //2.e
-        indexationSalaryEmployee(employee, 1, 5);
+        indexationSalaryEmployee(employee, 3, 10);
         //2.f
-        printAllEmployeeOnDeportment(employee, 2);
+        printAllEmployeeOnDeportment(employee);
         //3.a
         findEmployeeMinNumber(employee, 80000);
         //3.b
@@ -98,7 +98,6 @@ public class Main {
 
     public static void findDeportmentMinPay(Employee[] employees, int deportment) {
         int maxPay = Integer.MAX_VALUE;
-
         for (Employee employee : employees) {
             if (deportment == employee.getDepartment()) {
                 if (employee.getPayEmployee() < maxPay) {
@@ -148,31 +147,28 @@ public class Main {
     }
 
     public static void indexationSalaryEmployee(Employee[] employees, int deportment, int indexationSalary) {
-        int numberEmployee = 0;
         int indexation = 0;
-        for (Employee employee : employees) {
+        for (int i = 0; i < employees.length; i++) {
+            Employee employee = employees[i];
             if (deportment == employee.getDepartment()) {
-                indexation += employee.getPayEmployee();
-                numberEmployee++;
-                indexation = indexation * indexationSalary / 100;
-            }
-        }
+                indexation = employee.getPayEmployee() * indexationSalary / 100 + employee.getPayEmployee();
+                System.out.println("Отдел : "+ employee.getDepartment()+", "+employee.getLastName()+ " " +employee.getName()+ " " +employee.getSurName()+", проиндексированная зарплата = " + indexation+" рублей");
 
-        System.out.println("Проиндексированная зарплата = " + indexation);
+            }
+    }
     }
 
-    public static void printAllEmployeeOnDeportment(Employee[] employees, int deportment) {
-        for (Employee employee : employees) {
-            if (deportment == employee.getDepartment()) {
-                System.out.println(employee);
-            }
+    public static void printAllEmployeeOnDeportment(Employee[] employees) {
+        for (int i = 0; i < employees.length; i++) {
+            Employee employee = employees[i];
+            System.out.println(employee.getLastName() + " " + employee.getName() + " " + employee.getSurName() + " зарплата = " + employee.getPayEmployee() + " рублей");
         }
     }
 
     public static void findEmployeeMinNumber(Employee[] employees, int number) {
         for (Employee employee : employees) {
             if (employee.getPayEmployee() > number) {
-                System.out.println(employee);
+                System.out.println(employee.getLastName() + " " + employee.getName() + " " + employee.getSurName() + " зарплата = " + employee.getPayEmployee() + " рублей");
             }
         }
     }
@@ -180,7 +176,7 @@ public class Main {
     public static void findEmployeeMaxNumber(Employee[] employees, int number) {
         for (Employee employee : employees) {
             if (employee.getPayEmployee() <= number) {
-                System.out.println(employee);
+                System.out.println(employee.getLastName() + " " + employee.getName() + " " + employee.getSurName() + " зарплата = " + employee.getPayEmployee() + " рублей");
             }
         }
     }
