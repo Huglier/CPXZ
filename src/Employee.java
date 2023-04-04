@@ -1,19 +1,22 @@
 public class Employee {
-    int counter;
-    String lastName;
-    String name;
-    String surName;
-    String department;
-    int payEmployee;
+    private  static  int counter = 1;
+    private int id;
+    private String lastName;
+    private String name;
+    private String surName;
+    private int department;
+    private int payEmployee;
 
-    public Employee(String lastName, String name, String surName, String department, int payEmployee) {
-
+    public Employee(String lastName, String name, String surName, int department, int payEmployee) {
+        this.id = counter++;
         this.lastName = lastName;
         this.name = name;
         this.surName = surName;
         this.department = department;
         this.payEmployee = payEmployee;
+
     }
+
 
     public String getLastName() {
         return lastName;
@@ -27,7 +30,7 @@ public class Employee {
         return surName;
     }
 
-    public String getDepartment() {
+    public int getDepartment() {
         return department;
     }
 
@@ -46,12 +49,18 @@ public class Employee {
     public void setPayEmployee() {
         this.payEmployee = payEmployee;
     }
-    public static int counter(){
-        int id = 0;
-        for (int i = 0; i <10; i=i+1){
-            id = id+1;
-        }
-        return id;
+
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                ", department='" + department + '\'' +
+                ", payEmployee=" + payEmployee +
+                '}';
     }
 }
 
